@@ -45,24 +45,24 @@ db.once('open',()=>{
 
 
 
-const appoinmentRouter = require("./appointments/routes");
+const appoinmentRouter = require("./appointments/Routes/routes");
 app.use("/appoinment", appoinmentRouter);
 
 const sheduleEmail = require("./routes/sheduleemail.js");
 app.use("/sheduleEmail", sheduleEmail);
 
 
-const labAppoinmentRouter = require("./labAppointments/routes");
+const labAppoinmentRouter = require("./labAppointments/Routes/routes");
 app.use("/Appoinment_slip", express.static("Appoinment_slip"));
 app.use("/labappoinment", labAppoinmentRouter);
 
-const doctorRouter = require("./doctors/routes.js");
+const doctorRouter = require("./doctors/Routes/routes");
 app.use("/doctor", doctorRouter);
 app.use("/images", express.static("images"));
 
 
-const reportRouter = require("./labReports/routes");
-const bloodreportRouter = require("./bloodReports/routes");
+const reportRouter = require("./labReports/Routes/routes");
+const bloodreportRouter = require("./bloodReports/Routes/routes");
 const labitemsinventory = require("./routes/labitemsinventory");
 app.use("/report", reportRouter);//load the reports file inside the route folder
 app.use("/bloodreport", bloodreportRouter);
@@ -77,21 +77,21 @@ app.use('/api', inventoryRoutes)
 app.use('/api', maintenanceRoutes)
 
 
-const pharmacyRouter = require("./pharmacies/routes");
-const updateTotal = require("./updateTotal/routes")
-const Medicine = require("./medicine/routes");
+const pharmacyRouter = require("./pharmacies/Routes/routes");
+const updateTotal = require("./updateTotal/Routes/routes")
+const Medicine = require("./medicine/Routes/routes");
 
 app.use("/pha", pharmacyRouter);
 app.use("/Prescriptions", express.static("Prescriptions"));
 app.use("/upd", updateTotal);
 app.use("/med", Medicine);
 
-const patientRouter = require("./PatientAuth/routes.js");
+const patientRouter = require("./PatientAuth/Routes/routes");
 
 app.use("/patient", patientRouter);  //load patient js
 app.use("/ProfilePic", express.static("ProfilePic"));
 
-const CustomerRouter = require("./customers/routes");
+const CustomerRouter = require("./customers/Routes/routes");
 app.use("/customer", CustomerRouter);
 
 // const doctorRouter = require("./routes/doctors.js");
@@ -101,10 +101,10 @@ const salaryRouter = require("./routes/salary.js");
 app.use("/DoctorImage", express.static("DoctorImage"));
 app.use("/salary", salaryRouter);//load salary.js
 
-const sheduleUpdate = require("./appointments/autoRoute");
+const sheduleUpdate = require("./appointments/Routes/autoRoute");
 app.use("/appinmentAutoup", sheduleUpdate);
 
-const VideoConsultant = require("./consults/routes");
+const VideoConsultant = require("./consults/Routes/routes");
 app.use("/vconsult", VideoConsultant);
 
 const paymentRoutes = require('./controller/paymentController')
@@ -112,7 +112,7 @@ const salaryRoutes = require('./controller/salaryController')
 app.use('/api', paymentRoutes)
 app.use('/api', salaryRoutes)
 
-const loginRoutes = require('./login/routes.js')
+const loginRoutes = require('./login/Routes/routes')
 app.use('/auth', loginRoutes)
 
 app.listen(PORT, () => {
